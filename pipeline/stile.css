@@ -36,14 +36,14 @@ select,input[type=search],input[type=number]{border-radius:999px!important}
   .tile .l{font-size:10.5px;line-height:1.25}
   .intro{padding:14px 16px;margin:12px 0}
   .intro p{font-size:14px;line-height:1.5}
-  .lt{padding:16px 14px 4px}
-  .lt h2{font-size:19px;line-height:1.25}
-  .lt h3{font-size:15px;margin-top:20px}
-  .lt p,.lt .apre,.lt ol{font-size:14px}
-  .lt .cols{grid-template-columns:1fr;gap:8px}
-  .lt .box{padding:11px 12px}
-  .lt table{font-size:12.5px}
-  .lt th,.lt td{padding:5px 4px}
+  .wrap .lt{padding:16px 14px 4px}
+  .wrap .lt h2{font-size:19px;line-height:1.25}
+  .wrap .lt h3{font-size:15px;margin-top:20px}
+  .wrap .lt p,.wrap .lt .apre,.wrap .lt ol{font-size:14px}
+  .wrap .lt .cols{grid-template-columns:1fr;gap:8px}
+  .wrap .lt .box{padding:11px 12px}
+  .wrap .lt table{font-size:12.5px}
+  .wrap .lt th,.wrap .lt td{padding:5px 4px}
   .barra{display:grid;grid-template-columns:1fr 1fr;gap:6px}
   .barra select,.barra input[type=search]{width:100%;min-width:0;font-size:13px}
   .barra input[type=search],.barra .mini,.barra button{grid-column:1/-1}
