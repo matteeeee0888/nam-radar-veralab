@@ -517,7 +517,7 @@
     ],
     [
       "Intimo",
-      "\\b((igiene|zona|detergente|crema|gel|trattamento|deodorante|skincare|prodotti) intim|stimolante|piacere|vaginal|candida|lubrific)"
+      "\\b(intim[aeio]\\b|stimolante|piacere|vaginal|candida|lubrific)"
     ],
     [
       "Abbigliamento",
