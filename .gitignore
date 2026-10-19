@@ -1,0 +1,5 @@
+pipeline/docs/
+pipeline/site/
+pipeline/__pycache__/
+pipeline/tools/__pycache__/
+pipeline/data/*.log
