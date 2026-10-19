@@ -1,0 +1,28 @@
+/* Veralab: bianco, rosa del brand, testo prugna. Niente tema scuro. */
+html:root:root{
+  --bg:#ffffff; --card:#ffffff; --ink:#311028; --muted:#7a6874; --line:#f0e4ec;
+  --accent:#D90092; --accent-soft:#fff5fc; --hot:#D90092; --hot-soft:#fff5fc;
+  --warm:#9a5a85; --warm-soft:#fbf3f8; --radius:16px;
+  color-scheme:light;
+}
+body{background:#fff;font-family:"Instrument Sans",ui-sans-serif,-apple-system,"Segoe UI",system-ui,sans-serif}
+header button.ghost{display:none}
+header{border-bottom:3px solid var(--accent);padding-bottom:14px;margin-bottom:4px}
+h1{font-size:30px;font-weight:600;letter-spacing:-.03em;color:var(--ink)}
+h1::before{content:"veralab \00d7  nam";display:block;font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+h2{color:var(--ink)}
+.tile{background:var(--accent-soft);border-color:transparent}
+.tile .n{color:var(--accent)}
+.panel{box-shadow:0 1px 0 var(--line)}
+.lt{background:#fff;border:1px solid var(--line)}
+.lt .kick{color:var(--accent);font-weight:600}
+.lt .bar .tr{background:#f7e9f2}
+.lt .bar .tr i{background:#e9a3cf}
+.lt .bar.noi .tr i{background:var(--accent)}
+.lt .box{background:#fffafd;border-color:var(--line)}
+.intro{background:var(--accent);color:#fff;border-radius:var(--radius);padding:20px 22px;margin:18px 0 18px}
+.intro p{margin:0;max-width:86ch;font-size:16px;line-height:1.55}
+.intro b{color:#fff}
+.chip.on{background:var(--accent);border-color:var(--accent)}
+select,input[type=search],input[type=number]{border-radius:999px!important}

@@ -9,7 +9,8 @@
     ],
     "mercato": "IT",
     "dominio": "veralab.namstudio.it",
-    "repo": "matteeeee0888/nam-radar-veralab"
+    "repo": "matteeeee0888/nam-radar-veralab",
+    "titolo": "Radar ads cosmetica Italia"
   },
   "competitors": [
     {
@@ -379,8 +380,48 @@
       "mercato": "IT",
       "tier": "adiacente",
       "tipo": "corpo-anticellulite",
+      "attivo": false,
+      "nota": "Spento il 19/10/2026: vende leggings, non cosmetici. Fuori dal catalogo Veralab."
+    },
+    {
+      "slug": "dokoba",
+      "nome": "Dokobà",
+      "page_id": "755651960975438",
+      "mercato": "IT",
+      "tier": "diretto",
+      "tipo": "creator-brand",
       "attivo": true,
-      "nota": "Leggings anticellulite: compete con il Leg Booster sulla stessa paura."
+      "nota": "Brand skincare di Nebua (creator)."
+    },
+    {
+      "slug": "audrer",
+      "nome": "Audrer",
+      "page_id": "108614515523951",
+      "mercato": "IT",
+      "tier": "diretto",
+      "tipo": "creator-brand",
+      "attivo": true,
+      "nota": "Brand di Giulia De Lellis: skincare e make-up, da Sephora."
+    },
+    {
+      "slug": "rebeya",
+      "nome": "Rebeya",
+      "page_id": "247874635072954",
+      "mercato": "IT",
+      "tier": "diretto",
+      "tipo": "creator-brand",
+      "attivo": true,
+      "nota": "Brand di Belén Rodríguez, gruppo Rougj."
+    },
+    {
+      "slug": "mulac",
+      "nome": "Mulac Cosmetics",
+      "page_id": "1464043597158037",
+      "mercato": "IT",
+      "tier": "diretto",
+      "tipo": "make-up",
+      "attivo": true,
+      "nota": "Make-up italiano nato online."
     }
   ],
   "_scartati": {
@@ -466,6 +507,33 @@
     [
       "Problema raccontato",
       "\\b(anch io|ho provato|non riuscivo|stanc|vergogn|finalmente|mi sentivo|ti capita|odio)"
+    ]
+  ],
+  "_nota_escludi": "Regole sul catalogo Veralab al 19/10/2026 (viso, make-up, corpo, solari, fragranze): via le inserzioni su prodotti che Veralab non vende. Testo gia' normalizzato: minuscolo, senza accenti.",
+  "escludi": [
+    [
+      "Capelli",
+      "\\b(shampoo|balsamo per capelli|cuoio capelluto|anticaduta|caduta dei capelli|haircare|hair|elvive|chioma|lunghezze|tinta per capelli|rosmarino|capelli (piu )?(forti|deboli|sfibrati|ricci|lisci|grassi|secchi|crespi|sani|lunghi|puliti))"
+    ],
+    [
+      "Intimo",
+      "\\b((igiene|zona|detergente|crema|gel|trattamento|deodorante|skincare|prodotti) intim|stimolante|piacere|vaginal|candida|lubrific)"
+    ],
+    [
+      "Abbigliamento",
+      "\\b(leggings?|guaina|pancera)\\b"
+    ],
+    [
+      "Integratori",
+      "\\b(integrator|capsul|compresse|bustin)"
+    ],
+    [
+      "Denti",
+      "\\b(denti|dentifric)"
+    ],
+    [
+      "Non di prodotto",
+      "\\b(terapia oncologic|caregiver)"
     ]
   ]
 }

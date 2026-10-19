@@ -155,6 +155,24 @@ def main():
         rows = [r for r in rows if r["competitor"] in tenuti]
         print(f"  soglia {soglia}: tolti {scartati} inserzionisti "
               f"({prima - len(rows)} inserzioni) con meno di {soglia} inserzioni")
+    # Fuori tema: inserzioni di un competitor su prodotti che il cliente non vende (i
+    # capelli per chi fa solo pelle, i leggings per chi fa cosmetica). Le regole stanno in
+    # competitors.json sotto "escludi", coppie [etichetta, espressione] lette su titolo,
+    # copy e landing. Le nostre inserzioni non si toccano mai.
+    escludi = [(n, re.compile(e)) for n, e in (cfg.get("escludi") or [])]
+    if escludi:
+        from collections import Counter
+        tolte, tenute = Counter(), []
+        for r in rows:
+            if r.get("tier") != "cliente":
+                t = norm(" ".join(str(r.get(k) or "") for k in ("titolo", "copy", "landing_url")))
+                motivo = next((n for n, e in escludi if e.search(t)), None)
+                if motivo:
+                    tolte[motivo] += 1
+                    continue
+            tenute.append(r)
+        rows = tenute
+        print("  fuori tema: " + ", ".join(f"{n} {v}" for n, v in tolte.most_common()))
     # Il nome con cui ci chiamiamo lo comanda competitors.json, ma SOLO per la pagina
     # principale: chi ha piu' pagine (una per paese) deve restare distinto, altrimenti
     # cinque mercati collassano in una riga sola e la vista per paese sparisce.
@@ -264,8 +282,12 @@ def main():
     titolo = (cfg.get("cliente") or {}).get("titolo") or f"Radar creatività {cliente}"
     lettura_fp = os.path.join(ROOT, "lettura.html")
     lettura = open(lettura_fp).read() if os.path.exists(lettura_fp) else ""
+    # stile.css accanto a competitors.json: colori e ritocchi del cliente, sopra il tema base
+    stile_fp = os.path.join(ROOT, "stile.css")
+    stile = open(stile_fp).read() if os.path.exists(stile_fp) else ""
     html = (TEMPLATE.replace("/*__DATI__*/null", json.dumps(payload, ensure_ascii=False))
-            .replace("__TITOLO__", titolo).replace("<!--__LETTURA__-->", lettura))
+            .replace("__TITOLO__", titolo).replace("<!--__LETTURA__-->", lettura)
+            .replace("<!--__STILE__-->", stile))
     open(os.path.join(DOCS, "index.html"), "w").write(html)
     print(f"dashboard: {len(rows)} inserzioni, {len(riepilogo)} inserzionisti, "
           f"{'con' if ha_reach else 'senza'} reach UE -> docs/index.html")
@@ -396,6 +418,7 @@ h2 span{color:var(--muted);font-weight:400;font-size:13px}
 button.ghost{border:1px solid var(--line);background:transparent;color:var(--muted);
   border-radius:8px;padding:6px 11px;font:inherit;font-size:12px;cursor:pointer}
 @media(max-width:640px){.row .lab{width:100%}.wrap{padding:18px 12px 60px}}
+<!--__STILE__-->
 </style></head><body><div class="wrap">
 
 <header>
