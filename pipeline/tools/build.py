@@ -232,6 +232,10 @@ def main():
         # il video scaricato da fetch_videos.py: quello non scade piu'
         if os.path.exists(os.path.join(MEDIA, f"{r['ad_archive_id']}.mp4")):
             r["video_local"] = f"media/{r['ad_archive_id']}.mp4"
+        # in cloud fetch_videos salta i video gia' pubblicati in v/: vanno tenuti lo stesso
+        elif os.environ.get("RADAR_SITE") and os.path.exists(
+                os.path.join(os.environ["RADAR_SITE"], "v", f"{r['ad_archive_id']}.mp4")):
+            r["video_local"] = f"media/{r['ad_archive_id']}.mp4"
 
     # ---- riepilogo per competitor
     per_comp = defaultdict(lambda: {"ads": 0, "concetti": set(), "reach": 0, "giorni": [],

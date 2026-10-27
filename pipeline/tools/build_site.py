@@ -76,10 +76,13 @@ def main():
         nuovi = []
         for rel in (a.get("thumbs") or []):
             fp = os.path.join(DOCS, rel)
-            if not os.path.exists(fp):
-                continue
             out_rel = rel.rsplit(".", 1)[0] + ".webp"
             out_fp = os.path.join(SITE, out_rel)
+            # In cloud docs/media riparte vuota: se il webp e' gia' pubblicato si tiene
+            # quello. Senza questo controllo il giro del 26/10/2026 ha tolto le
+            # anteprime a 2.252 inserzioni e la pulizia ha cancellato i file.
+            if not os.path.exists(fp) and not (os.path.exists(out_fp) and os.path.getsize(out_fp) > 500):
+                continue
             if os.path.exists(out_fp) and os.path.getsize(out_fp) > 500:
                 pesoi += os.path.getsize(out_fp)
             else:
